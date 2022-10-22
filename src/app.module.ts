@@ -2,6 +2,8 @@ import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { join } from 'path';
 import { UsersModule } from './users/users.module';
+import { AuthModule } from './auth/auth.module';
+import { ConfigModule } from '@nestjs/config';
 
 @Module({
   imports: [UsersModule,
@@ -15,6 +17,10 @@ import { UsersModule } from './users/users.module';
       entities: [join(__dirname, '**/*.entity{.ts,.js}')],
       synchronize: true
 
+    }),
+    AuthModule,
+    ConfigModule.forRoot({
+      envFilePath: '.env.development'
     })
   ],
   controllers: [],

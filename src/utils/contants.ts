@@ -1,7 +1,9 @@
 export enum Services {
-   USERS = "USERS_SERVICE"
+   USERS = "USERS_SERVICE",
+   AUTH = "AUTH_SERVICE"
 }
 
 export enum Routes {
-   USERS = 'users'
+   USERS = 'users',
+   AUTH = 'auth'
 }

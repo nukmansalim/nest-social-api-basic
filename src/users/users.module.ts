@@ -11,6 +11,7 @@ import { UsersService } from './users.service';
   providers: [{
     provide: Services.USERS,
     useClass: UsersService
-  }]
+  }],
+  exports: [Services.USERS]
 })
 export class UsersModule { }

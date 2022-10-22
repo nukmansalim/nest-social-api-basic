@@ -7,4 +7,5 @@ export interface IUserService {
    countUser(): Promise<number>
    createUser(dto: createUserDto): Promise<any>
    deleteUser(id: number): Promise<any>
+   findOneByUsername(username: string, password: string): Promise<any>
 }

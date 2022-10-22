@@ -41,6 +41,14 @@ export class UsersService implements IUserService {
 
    }
 
+   async findOneByUsername(username: string, password: string): Promise<any> {
+      const user = await this.userRepository.findOneBy({ username })
+      if (!user) throw new HttpException("User is not Exists", 400)
+      const compared = await bcrypt.compare(password, user.password)
+      if (!compared) new HttpException("Invalid Credentials", HttpStatus.UNAUTHORIZED)
+      return user
+   }
+
    async deleteUser(id: number): Promise<any> {
       const deleted = await this.userRepository.delete(id)
 
